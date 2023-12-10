@@ -1,11 +1,15 @@
 :root {
-  --aside-width: 400px;
+  --aside-width: 80%;
   --cart-aside-summary-height-with-discount: 300px;
   --cart-aside-summary-height: 250px;
-  --grid-item-width: 355px;
+  --grid-item-width: 360px;
   --header-height: 64px;
   --color-dark: #000;
   --color-light: #fff;
+  --acent-color: #a996ff;
+
+  --offset: 6px;
+
 }
 
 img {
@@ -19,7 +23,7 @@ img {
 */
 aside {
   background: var(--color-light);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 50px var(--acent-color);
   height: 100vh;
   max-width: var(--aside-width);
   min-width: var(--aside-width);
@@ -27,11 +31,11 @@ aside {
   right: calc(-1 * var(--aside-width));
   top: 0;
   transition: transform 200ms ease-in-out;
+  ;
 }
 
 aside header {
   align-items: center;
-  border-bottom: 1px solid var(--color-dark);
   display: flex;
   height: var(--header-height);
   justify-content: space-between;
@@ -129,13 +133,16 @@ aside li {
 */
 .header {
   align-items: center;
-  background: #fff;
+  background: #ffffffbd;
+  border-bottom: var(--acent-color) double thick;
   display: flex;
   height: var(--header-height);
   padding: 0 1rem;
   position: sticky;
   top: 0;
   z-index: 1;
+  backdrop-filter: blur(2rem);
+  /* border-bottom:  thick double var(--accent-color);  */
 }
 
 .header-menu-mobile-toggle {
@@ -308,10 +315,42 @@ aside li {
   position: relative;
 }
 
+.featured-collection h1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: var(--acent-color);
+  font-family: Helvetica, sans-serif;
+  font-size: 4em;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--color-light);
+  /* vertical-align: middle; */
+}
+
+.featured-collection span {
+  /* top:50%; */
+  display: flex;
+  backdrop-filter: blur(1rem);
+  background-color: #ffffff91;
+  flex-direction: column;
+  /* stroke: 2px #fff; */
+  /* border-radius: 1rem; */
+  /* margin: auto; */
+  /* align-content: center; */
+  /* justify-content: flex-end; */
+}
+
 .featured-collection-image {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1;  
+  /* display: grid; */
+  /* flex-direction: column; */
+
   @media (min-width: 45em) {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
+    /* display: grid; */
+    /* flex-direction: column; */
   }
 }
 
@@ -323,15 +362,16 @@ aside li {
 
 .recommended-products-grid {
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
   @media (min-width: 45em) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .recommended-product img {
   height: auto;
+  background-size: cover;
 }
 
 /*
@@ -342,7 +382,7 @@ aside li {
 .collections-grid {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
+  grid-template-columns: repeat(3, 1fr);
   margin-bottom: 2rem;
 }
 
@@ -350,11 +390,62 @@ aside li {
   height: auto;
 }
 
+.item {
+  border: black solid 6px;
+  box-shadow: var(--offset) var(--offset) 0px 0px #FF0000;   
+  animation: bgColor 12s infinite linear;
+
+  /* box-shadow:0px 0px 0px 4px black inset; */
+  border-radius: 10px;
+}
+
+@keyframes bgColor {
+  12.5% {
+    box-shadow: var(--offset) var(--offset) 1px 0px #FF0000;
+  }
+  25% {
+    box-shadow: var(--offset) var(--offset) 0px 1px #FFA500;
+  }
+  37.5% {
+    box-shadow: var(--offset) var(--offset) 1px 1px #FFFF00;
+  }
+  50% {
+    box-shadow: var(--offset) var(--offset) 1px 0px #7FFF00;
+  }
+  62.5% {
+    box-shadow: var(--offset) var(--offset) 0px 1px #00FFFF;
+  }
+  75% {
+    box-shadow: var(--offset) var(--offset) 0px 0px #0000FF;
+  }
+  87.5% {
+    box-shadow: var(--offset) var(--offset) 1px 0px #9932CC;
+  }
+  100% {
+    box-shadow: var(--offset) var(--offset) 0px 1px #FF1493;
+  }
+}
+
+.collection-item h5 {
+  text-align: center;
+  font-size: larger;
+  
+  /* backdrop-filter: blur(1rem); */
+}
+.collection-item span {
+  /* text-align: center; */
+  /* border: black solid */
+  /* backdrop-filter: blur(1rem); */
+}
+
 /*
 * --------------------------------------------------
 * routes/collections.$handle.tsx
 * --------------------------------------------------
 */
+
+.collection {}
+
 .collection-description {
   margin-bottom: 1rem;
   max-width: 95%;
@@ -365,7 +456,7 @@ aside li {
 
 .products-grid {
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 3rem;
   grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
   margin-bottom: 2rem;
 }
@@ -373,6 +464,17 @@ aside li {
 .product-item img {
   height: auto;
   width: 100%;
+}
+
+.product-item{
+  border: black solid 6px;
+  border-radius: 10px;
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  /* box-shadow: var(--offset) var(--offset) 0px 0px var(--acent-color);  */
 }
 
 /*

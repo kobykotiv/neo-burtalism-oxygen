@@ -17,7 +17,7 @@ export async function loader({request, params, context}: LoaderFunctionArgs) {
   const {handle} = params;
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 8,
+    pageBy: 250,
   });
 
   if (!handle) {
@@ -63,10 +63,11 @@ export default function Collection() {
 
 function ProductsGrid({products}: {products: ProductItemFragment[]}) {
   return (
-    <div className="products-grid">
+    <div className="products-grid ">
       {products.map((product, index) => {
         return (
-          <ProductItem
+          <ProductItem 
+            
             key={product.id}
             product={product}
             loading={index < 8 ? 'eager' : undefined}
@@ -88,7 +89,7 @@ function ProductItem({
   const variantUrl = useVariantUrl(product.handle, variant.selectedOptions);
   return (
     <Link
-      className="product-item"
+      className="product-item item text-center"
       key={product.id}
       prefetch="intent"
       to={variantUrl}
@@ -102,7 +103,7 @@ function ProductItem({
           sizes="(min-width: 45em) 400px, 100vw"
         />
       )}
-      <h4>{product.title}</h4>
+      <h3>{product.title}</h3>
       <small>
         <Money data={product.priceRange.minVariantPrice} />
       </small>
