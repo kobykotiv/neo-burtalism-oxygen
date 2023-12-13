@@ -381,9 +381,11 @@ aside li {
 */
 .collections-grid {
   display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 2rem;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 45em) {
+    grid-template-columns: repeat(5, 1fr);
+  }  margin-bottom: 2rem;
 }
 
 .collection-item img {
@@ -391,7 +393,7 @@ aside li {
 }
 
 .item {
-  border: black solid 6px;
+  border: black solid 1vmin;
   box-shadow: var(--offset) var(--offset) 0px 0px #FF0000;   
   animation: bgColor 12s infinite linear;
 
@@ -401,28 +403,28 @@ aside li {
 
 @keyframes bgColor {
   12.5% {
-    box-shadow: var(--offset) var(--offset) 1px 0px #FF0000;
+    box-shadow: var(--offset) var(--offset) 0px 0px #FF0000;
   }
   25% {
-    box-shadow: var(--offset) var(--offset) 0px 1px #FFA500;
+    box-shadow: var(--offset) var(--offset) 0px 0px #FFA500;
   }
   37.5% {
-    box-shadow: var(--offset) var(--offset) 1px 1px #FFFF00;
+    box-shadow: var(--offset) var(--offset) 0px 0px #FFFF00;
   }
   50% {
-    box-shadow: var(--offset) var(--offset) 1px 0px #7FFF00;
+    box-shadow: var(--offset) var(--offset) 0px 0px #7FFF00;
   }
   62.5% {
-    box-shadow: var(--offset) var(--offset) 0px 1px #00FFFF;
+    box-shadow: var(--offset) var(--offset) 0px 0px #00FFFF;
   }
   75% {
     box-shadow: var(--offset) var(--offset) 0px 0px #0000FF;
   }
   87.5% {
-    box-shadow: var(--offset) var(--offset) 1px 0px #9932CC;
+    box-shadow: var(--offset) var(--offset) 0px 0px #9932CC;
   }
   100% {
-    box-shadow: var(--offset) var(--offset) 0px 1px #FF1493;
+    box-shadow: var(--offset) var(--offset) 0px 0px #FF1493;
   }
 }
 
