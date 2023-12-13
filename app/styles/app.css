@@ -383,9 +383,13 @@ aside li {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
-  @media (min-width: 45em) {
+  @media (min-width: 35em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 75em) {
     grid-template-columns: repeat(5, 1fr);
-  }  margin-bottom: 2rem;
+  }  
+  margin-bottom: 2rem;
 }
 
 .collection-item img {
